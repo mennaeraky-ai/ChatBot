@@ -9,14 +9,23 @@ import openai
 from langdetect import detect, LangDetectException
 import requests
 import re
+import os
 from elasticsearch import Elasticsearch
 
 app = Flask(__name__)
 
-# Configure API keys and Elasticsearch client
-openai.api_key = "your api"
-es = Elasticsearch(["link"], basic_auth=('username', 'pass'), request_timeout=30)
+from dotenv import load_dotenv
 
+# Load environment variables from .env file
+load_dotenv()
+
+# Now, you can access the variables using os.getenv
+openai.api_key = os.getenv("OPENAI_API_KEY")
+es = Elasticsearch(
+    [os.getenv("ELASTICSEARCH_URL")],
+    basic_auth=(os.getenv("ELASTIC_USER"), os.getenv("ELASTIC_PASSWORD")),
+    request_timeout=30
+)
 # Helper functions
 def get_embedding(text):
     try:
