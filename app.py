@@ -14,18 +14,12 @@ from elasticsearch import Elasticsearch
 
 app = Flask(__name__)
 
-from dotenv import load_dotenv
 
-# Load environment variables from .env file
-load_dotenv()
 
 # Now, you can access the variables using os.getenv
-openai.api_key = os.getenv("OPENAI_API_KEY")
-es = Elasticsearch(
-    [os.getenv("ELASTICSEARCH_URL")],
-    basic_auth=(os.getenv("ELASTIC_USER"), os.getenv("ELASTIC_PASSWORD")),
-    request_timeout=30
-)
+openai.api_key = "sk-kse_WDeU_zcD0YMgYmq_wMbtMzXJOX_9w1oFXxUBNWT3BlbkFJUtJdInsqGH1-mOeiojNVcrT-GdTxiQLeo1YXxGEZsA"
+es = Elasticsearch(["https://elasticsearch-staging-9a4cd8.es.eu-west-1.aws.found.io/"], basic_auth=('elastic', 'EK4PdqRuUkPOYv9orqTFIBmR'), request_timeout=30)
+
 # Helper functions
 def get_embedding(text):
     try:
