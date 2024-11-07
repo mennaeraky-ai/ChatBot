@@ -11,6 +11,9 @@ COPY . .
 # Install the necessary packages
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Copy the .env file into the container
+COPY .env .env
+
 # Make port 5000 available to the world outside this container
 EXPOSE 5000
 
