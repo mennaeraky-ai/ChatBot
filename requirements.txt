@@ -3,5 +3,4 @@ openai==0.27.0  # The latest version before the major API change
 langdetect==1.0.9
 requests==2.31.0
 elasticsearch==8.9.0
-python-dotenv==1.0.0  # For loading .env variables
 numpy  
